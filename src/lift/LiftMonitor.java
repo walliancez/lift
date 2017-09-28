@@ -11,12 +11,34 @@ public class LiftMonitor {
 						// the lift at the various floors.
 	int load;			 // The number of people currently occupying the lift.
 
+	public LiftMonitor() {
+		waitExit = new int[4];
+		waitEntry = new int[7];
+		
+		fillArray(waitExit);
+		fillArray(waitEntry);
+	}
+	
+	private void fillArray(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = 0;
+		}
+	}
 	
 	synchronized void addPersonToLift(int id) {
 		
 	}
 	
-	synchronized int currentFloor() {
+	synchronized boolean anyoneWaiting() {
+		for(int i = 0; i < waitEntry.length; i++) {
+			if(waitEntry[i] != 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	synchronized int nextFloor() {
 		return 0;
 	}
 	
